@@ -32,6 +32,12 @@ function! planner#PlannerTodoToggle()
 
 endfunction
 
+function! planner#PlannerTodoInsert()
+    execute "normal o- [] "
+    startinsert!
+endfunction
+
 function! planner#PlannerLog()
     echomsg "[log] diary.vim loaded"
 endfunction
+

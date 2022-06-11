@@ -14,3 +14,4 @@ let g:loaded_todo_diary_plugin=1
 "expose following commands
 command! -nargs=0 PlannerTodoDone call planner#PlannerTodoDone()
 command! -nargs=0 PlannerTodoToggle call planner#PlannerTodoToggle()
+command! -nargs=0 PlannerTodoInsert call planner#PlannerTodoInsert()
