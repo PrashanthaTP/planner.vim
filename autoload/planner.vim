@@ -4,8 +4,7 @@
 "Last Modified   : 11 June 2022
 """
 function! planner#PlannerTodoDone()
- 	let save_cursor = getcurpos()
-    echomsg "[diary] toggled todo"
+    let save_cursor = getcurpos()
     let todoline = matchstr(getline("."),"\\s*[-+]\\s\[\\s*\\]")
     if empty(todoline)
         echomsg "[warning] not a todo line"
@@ -15,20 +14,30 @@ function! planner#PlannerTodoDone()
     
     call setpos(".",save_cursor) 
 
+    echomsg "[diary] DONE"
 endfunction
 
 
 function! planner#PlannerTodoToggle()
- 	let save_cursor = getcurpos()
-    echomsg "[diary] toggled todo"
-    let todoline = matchstr(getline("."),"\\s*[-+]\\s\[.\\]")
-    if empty(todoline)
+    let save_cursor = getcurpos()
+
+"echo matchstr(getline('.'),'\v[-+]\s?\[.?\]')
+    let is_todoline = matchstr(getline("."),'\v\s*[-+]\s?\[.?\]')
+    if empty(is_todoline)
         echomsg "[warning] not a todo line"
     else
-        execute "normal 0f[di["
+        let is_done = matchstr(getline("."),"\\s*[-+]\\s\[✅\\]")
+        if empty(is_done)
+            "case : - [] yet to be complete
+            execute "normal 0f[a✅"
+        else
+            execute "normal 0f[di["
+        endif
     endif
     
     call setpos(".",save_cursor) 
+
+    echomsg "[diary] toggled todo"
 
 endfunction
 
