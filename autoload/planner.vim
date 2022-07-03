@@ -46,6 +46,13 @@ function! planner#PlannerTodoInsert()
     startinsert!
 endfunction
 
+
+function! planner#PlannerMoveToSection(section)
+    "https://stackoverflow.com/questions/56475817/vimscript-execute-search-does-not-work-anymore
+    "       delete + search       + insert       + go back to prev location
+    return "dd/".a:section."\<CR>"."\<ESC>o\<ESC>p"."\<ESC>\<C-o>"
+endfunction
+
 function! planner#PlannerLog()
     echomsg "[log] diary.vim loaded"
 endfunction

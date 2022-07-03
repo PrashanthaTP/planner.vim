@@ -18,7 +18,8 @@
 Example Keybindings
 
 ```vim
-nnoremap <leader>pd :PlannerTodoDone<CR>
-nnoremap <leader>pt :PlannerTodoToggle<CR>
-nnoremap <leader>pi :PlannerTodoInsert<CR>
+nnoremap <leader>td :PlannerTodoDone<CR>
+nnoremap <leader>tt :PlannerTodoToggle<CR>
+nnoremap <leader>ti :PlannerTodoInsert<CR>
+nnoremap <expr> <leader>tD planner#PlannerMoveToSection("# DONE")
 ```
